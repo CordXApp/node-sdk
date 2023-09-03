@@ -20,9 +20,9 @@ return console.log(response.message);
 
 ```js
 import { RequestClient } from '@cordxapp/request';
-const { get } = new RequestClient();
+const req = new RequestClient();
 
-const response = await get('https://api.cordx.lol');
+const response = await req.get('https://api.cordx.lol');
 
 return console.log(response.message);
 ```
@@ -35,16 +35,16 @@ return console.log(response.message);
 
 ```js
 const { RequestClient } = require('@cordxapp/request');
-const { post } = new RequestClient();
+const req = new RequestClient();
 
-return post('https://api.cordx.lol', 'SOME_BODY_HERE');
+return req.post({ url: 'https://api.cordx.lol', body: 'SOME_BODY_HERE' });
 ```
 
 ### ES6
 
 ```js
 import { RequestClient } from '@cordxapp/request';
-const { get } = new RequestClient();
+const req = new RequestClient();
 
-return post('https://api.cordx.lol', 'SOME_BODY_HERE');
+return req.post({ url: 'https://api.cordx.lol', body: 'SOME_BODY_HERE' });
 ```
