@@ -128,3 +128,8 @@ packages/pastes/node_modules/
 packages/request/node_modules/
 ./packages/pastes/node_modules/
 ./packages/request/node_modules/
+
+packages/pastes/CHANGELOG.md
+./packages/pastes/CHANGELOG.md
+packages/request/CHANGELOG.md
+./packages/request/CHANGELOG.md

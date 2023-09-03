@@ -8,3 +8,4 @@ logs/
 .gitattributes
 .gitignore
 .github/
+package-lock.json
