@@ -1,0 +1,48 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@types/node": "^18.15.5",
+    "@typescript-eslint/parser": "^6.4.0",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "eslint": "^8.47.0",
+    "lerna": "^7.1.5",
+    "prettier": "^3.0.2",
+    "raw-body": "^2.5.2",
+    "typedoc": "^0.24.8",
+    "typescript": "^5.0.2",
+    "undici": "^5.21.0"
+  },
+  "peerDependencies": {
+    "@types/node": ">= 18.15.5",
+    "typescript": ">= 5.0.2"
+  },
+  "scripts": {
+    "build": "lerna run build ",
+    "bootstrap": "lerna exec npm install",
+    "create": "npx lerna create",
+    "docs:gen": "typedoc",
+    "format": "prettier -w ./packages/**/src/**/*.{ts,tsx,js,jsx}",
+    "linter": "eslint --fix ./packages/**/src/**/*.{ts,tsx,js,jsx}",
+    "patch": "npm run linter && npm run format && lerna publish prerelease",
+    "publish": "npm run linter && npm run format && npm run build && lerna publish",
+    "test": "lerna run test",
+    "validate": "prettier -c ./packages/**/src/**/*.{ts,tsx,js,jsx}"
+  },
+  "homepage": "https://infinitybotlist.github.io/node-sdk/index.html",
+  "author": {
+    "name": "Toxic Dev",
+    "url": "https://github.com/Infinity-Development",
+    "email": "hey@infinitybots.gg"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InfinityBotList/node-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/InfinityBotList/node-sdk/issues"
+  }
+}

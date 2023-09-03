@@ -1,0 +1,16 @@
+{
+    "out": "./docs/",
+    "entryPoints": [
+        "packages/pastes/src/index.ts",
+        "packages/request/src/index.ts"
+    ],
+    "readme": "./README.md",
+    "name": "@infinitylist",
+    "darkHighlightTheme": "dark-plus",
+    "lightHighlightTheme": "light-plus",
+    "githubPages": true,
+    "excludeExternals": false,
+    "excludePrivate": true,
+    "excludeInternal": false,
+    "theme": "default"
+}

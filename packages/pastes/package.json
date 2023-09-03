@@ -1,0 +1,34 @@
+{
+    "name": "@cordxapp/pastes",
+    "version": "0.0.0",
+    "description": "Official module for posting code snippets, text and more to our bin",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "author": "Toxic Dev",
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "tsc",
+        "docs": "typedoc",
+        "test": "npm run test:all",
+        "test:all": "node ./tests/post.test.js && node ./tests/get.test.js && node ./tests/raw.test.js",
+        "test:post": "node ./tests/post.test.js",
+        "test:get": "node ./tests/get.test.js",
+        "test:raw": "node ./tests/raw.test.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/CordXApp/Pastes.git"
+    },
+    "bugs": {
+        "url": "https://github.com/CordXApp/Pastes/issues"
+    },
+    "homepage": "https://cordxapp.github.io/Pastes/",
+    "dependencies": {
+        "@types/node": "^20.5.1",
+        "raw-body": "^2.5.2",
+        "undici": "^5.21.0",
+        "typescript": "^5.1.6"
+    }
+}

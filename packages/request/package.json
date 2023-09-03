@@ -1,0 +1,30 @@
+{
+    "name": "@cordxapp/request",
+    "version": "0.0.0",
+    "description": "Simple request logic for our internal modules",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "author": "Toxic Dev",
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "tsc",
+        "docs": "typedoc",
+        "test": "node ./tests/req.test.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/CordXApp/Pastes.git"
+    },
+    "bugs": {
+        "url": "https://github.com/CordXApp/Pastes/issues"
+    },
+    "homepage": "https://cordxapp.github.io/Pastes/",
+    "dependencies": {
+        "@types/node": "^20.5.1",
+        "raw-body": "^2.5.2",
+        "undici": "^5.21.0",
+        "typescript": "^5.1.6"
+    }
+}

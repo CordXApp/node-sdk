@@ -1,0 +1,23 @@
+{
+    "$schema": "node_modules/lerna/schemas/lerna-schema.json",
+    "command": {
+        "publish": {
+            "registry": "https://registry.npmjs.org/",
+            "conventionalCommits": true,
+            "npmClient": "npm"
+        },
+        "version": {
+            "conventionalCommits": true,
+            "conventionalGraduate": true,
+            "allowBranch": "master",
+            "message": "publish new version",
+            "npmClient": "npm",
+            "exact": true
+        },
+        "bootstrap": {
+            "loglevel": "info"
+        }
+    },
+    "packages": ["packages/*"],
+    "version": "0.0.0"
+}
