@@ -30,5 +30,6 @@
         "raw-body": "^2.5.2",
         "typescript": "^5.1.6",
         "undici": "^5.21.0"
-    }
+    },
+    "gitHead": "69973b7059c59a707e0f75ba9577cad27a654dda"
 }
