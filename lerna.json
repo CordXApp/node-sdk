@@ -8,7 +8,6 @@
         },
         "version": {
             "conventionalCommits": true,
-            "conventionalGraduate": true,
             "allowBranch": "master",
             "message": "publish new version",
             "npmClient": "npm",
