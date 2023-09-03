@@ -1,9 +1,16 @@
 import { Dispatcher } from 'undici'
-import type { IncomingHttpHeaders } from 'undici/types/header'
 
 export interface Request {
-    url: string
-    method: Dispatcher.HttpMethod
-    headers: IncomingHttpHeaders
-    body: string
+    url: string;
+    method: Dispatcher.HttpMethod;
+    body?: Record<string, any>;
+}
+
+export interface Response {
+    code?: string,
+    statusCode?: number,
+    statusText?: string,
+    message?: string,
+    errormsg?: string,
+    status?: number,
 }

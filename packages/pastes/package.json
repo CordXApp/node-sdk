@@ -26,6 +26,7 @@
     },
     "homepage": "https://cordxapp.github.io/Pastes/",
     "dependencies": {
+        "@cordxapp/request": "latest",
         "@types/node": "^20.5.1",
         "raw-body": "^2.5.2",
         "typescript": "^5.1.6",

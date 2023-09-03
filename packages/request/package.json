@@ -11,7 +11,7 @@
     "scripts": {
         "build": "tsc",
         "docs": "typedoc",
-        "test": "node ./tests/req.test.js"
+        "test": "node ./tests/run.test.js"
     },
     "repository": {
         "type": "git",
@@ -23,6 +23,8 @@
     "homepage": "https://cordxapp.github.io/Pastes/",
     "dependencies": {
         "@types/node": "^20.5.1",
+        "chalk": "3.0.0",
+        "ora": "4.0.0",
         "raw-body": "^2.5.2",
         "typescript": "^5.1.6",
         "undici": "^5.21.0"
