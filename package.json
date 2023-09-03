@@ -34,17 +34,15 @@
     "test": "lerna run test",
     "validate": "prettier -c ./packages/**/src/**/*.{ts,tsx,js,jsx}"
   },
-  "homepage": "https://infinitybotlist.github.io/node-sdk/index.html",
+  "homepage": "https://cordxapp.github.io/node-sdk/index.html",
   "author": {
-    "name": "Toxic Dev",
-    "url": "https://github.com/Infinity-Development",
-    "email": "hey@infinitybots.gg"
+    "name": "Toxic Dev"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/InfinityBotList/node-sdk.git"
+    "url": "git+https://github.com/CordXApp/node-sdk.git"
   },
   "bugs": {
-    "url": "https://github.com/InfinityBotList/node-sdk/issues"
+    "url": "https://github.com/CordXApp/node-sdk/issues"
   }
 }

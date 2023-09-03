@@ -15,12 +15,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/CordXApp/Pastes.git"
+        "url": "git+https://github.com/CordXApp/node-sdk.git"
     },
     "bugs": {
-        "url": "https://github.com/CordXApp/Pastes/issues"
+        "url": "https://github.com/CordXApp/node-sdk/issues"
     },
-    "homepage": "https://cordxapp.github.io/Pastes/",
+    "homepage": "https://cordxapp.github.io/node-sdk/modules/pastes_src.html",
     "dependencies": {
         "@types/node": "^20.5.1",
         "chalk": "3.0.0",
