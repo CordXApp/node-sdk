@@ -1,5 +1,4 @@
 {
-    "$schema": "node_modules/lerna/schemas/lerna-schema.json",
     "command": {
         "publish": {
             "npmClientArgs": ["--no-package-lock"],
@@ -8,7 +7,6 @@
             "npmClient": "npm"
         },
         "version": {
-            "npmClientArgs": ["--no-package-lock"],
             "conventionalCommits": true,
             "allowBranch": "master",
             "message": "publish new version",
