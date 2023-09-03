@@ -1,6 +1,6 @@
 {
     "name": "@cordxapp/request",
-    "version": "0.0.5",
+    "version": "0.0.4",
     "description": "Simple request logic for our internal modules",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
