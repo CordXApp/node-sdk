@@ -15,3 +15,5 @@ commitlint.config.js
 commitlintrc.json
 .eslintrc
 .prettierrc
+package-lock.json
+CHANGELOG.md

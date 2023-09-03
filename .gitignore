@@ -18,6 +18,7 @@ packages/*/lib
 packages/*/dist
 
 CHANGELOG.md
+./CHANGELOG.md
 
 
 # Diagnostic reports (https://nodejs.org/api/report.html)

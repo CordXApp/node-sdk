@@ -9,3 +9,22 @@ logs/
 .gitignore
 .github/
 package-lock.json
+CHANGELOG.md
+./CHANGELOG.md
+
+# Package Dists
+packages/pastes/dist/
+./packages/pastes/dist/
+packages/request/dist/
+./packages/request/dist/
+
+# Package Modules
+packages/pastes/node_modules/
+packages/request/node_modules/
+./packages/pastes/node_modules/
+./packages/request/node_modules/
+
+packages/pastes/CHANGELOG.md
+./packages/pastes/CHANGELOG.md
+packages/request/CHANGELOG.md
+./packages/request/CHANGELOG.md
