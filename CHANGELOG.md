@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.4](https://github.com/InfinityBotList/node-sdk/compare/v0.0.3...v0.0.4) (2023-09-03)
+
+### Bug Fixes
+
+-   **update:** docs ([970a2b1](https://github.com/InfinityBotList/node-sdk/commit/970a2b14533b04059e7e29963368db3b7d81185d))
+
 ## 0.0.3 (2023-09-03)
 
 ### Bug Fixes
