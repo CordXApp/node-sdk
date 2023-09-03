@@ -25,7 +25,6 @@
   "scripts": {
     "build": "lerna run build ",
     "bootstrap": "lerna exec npm install",
-    "create": "npx lerna create",
     "docs:gen": "typedoc",
     "format": "prettier -w ./packages/**/src/**/*.{ts,tsx,js,jsx}",
     "linter": "eslint --fix ./packages/**/src/**/*.{ts,tsx,js,jsx}",
