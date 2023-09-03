@@ -128,3 +128,8 @@ packages/pastes/node_modules/
 packages/request/node_modules/
 ./packages/pastes/node_modules/
 ./packages/request/node_modules/
+
+packages/pastes/tests/
+packages/request/tests/
+./packages/pastes/tests/
+./packages/request/tests/
