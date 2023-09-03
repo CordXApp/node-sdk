@@ -1,6 +1,6 @@
 {
     "name": "@cordxapp/pastes",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "Official module for posting code snippets, text and more to our bin",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
@@ -28,7 +28,7 @@
     "dependencies": {
         "@types/node": "^20.5.1",
         "raw-body": "^2.5.2",
-        "undici": "^5.21.0",
-        "typescript": "^5.1.6"
+        "typescript": "^5.1.6",
+        "undici": "^5.21.0"
     }
 }
