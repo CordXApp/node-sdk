@@ -1,7 +1,6 @@
 {
     "command": {
         "publish": {
-            "npmClientArgs": ["--no-package-lock"],
             "registry": "https://registry.npmjs.org/",
             "conventionalCommits": true,
             "npmClient": "npm"

@@ -105,5 +105,3 @@ typings/
 package-lock.json
 yarn.lock
 eslint_report.json
-
-CHAGELOG.md
