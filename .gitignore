@@ -110,7 +110,6 @@ jspm_packages/
 
 # TernJS port file
 .tern-port
-package-lock.json
 yarn.lock
 eslint_report.json
 
