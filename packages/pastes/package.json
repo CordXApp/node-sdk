@@ -10,7 +10,6 @@
     },
     "scripts": {
         "build": "tsc",
-        "docs": "typedoc",
         "test": "npm run test:all",
         "test:all": "node ./tests/post.test.js && node ./tests/get.test.js && node ./tests/raw.test.js",
         "test:post": "node ./tests/post.test.js",
