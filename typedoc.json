@@ -7,7 +7,7 @@
         "packages/request/src/index.ts"
     ],
     "readme": "./README.md",
-    "name": "@infinitylist",
+    "name": "CordX Modules",
     "darkHighlightTheme": "dark-plus",
     "lightHighlightTheme": "light-plus",
     "githubPages": true,
