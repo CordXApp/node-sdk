@@ -10,7 +10,8 @@
     },
     "scripts": {
         "build": "tsc",
-        "docs": "typedoc"
+        "docs": "typedoc",
+        "test": "node ./tests/base.test.js"
     },
     "repository": {
         "type": "git",

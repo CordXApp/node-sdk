@@ -2,6 +2,10 @@ export interface Generate8Ball {
     response: string
 }
 
+export interface Required8BallParams {
+    question: string
+}
+
 export interface GenerateAdvice {
     advice: string
 }

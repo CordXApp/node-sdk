@@ -3,6 +3,12 @@ Simple module for posting and fetching code snippets, text and more to/from our 
 
 ---
 
+## Documentation
+- [User Guides](https://help.cordx.lol/docs/npm/request)
+- [TypeDocs](https://cordxapp.github.io/node-sdk/modules/request_src.html)
+
+---
+
 ## Install
 
 ```

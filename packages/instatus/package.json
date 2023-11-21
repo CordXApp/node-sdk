@@ -10,7 +10,8 @@
     },
     "scripts": {
         "build": "tsc",
-        "docs": "typedoc"
+        "docs": "typedoc",
+        "test": "node ./tests/base.test.js"
     },
     "repository": {
         "type": "git",
@@ -22,7 +23,9 @@
     "homepage": "https://cordxapp.github.io/node-sdk/modules/instatus_src.html",
     "dependencies": {
         "@types/node": "^20.5.1",
+        "@types/node-fetch": "^2.5.10",
         "axios": "^1.4.0",
+        "node-fetch": "^2.6.1",
         "typescript": "^5.1.6"
     }
 }

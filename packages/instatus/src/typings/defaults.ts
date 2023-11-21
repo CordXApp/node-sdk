@@ -2,6 +2,7 @@ export interface InstatusOptions {
     apiKey: string
     apiVersion: string
     pageId: string
+    compId: string
 }
 
 export interface DefaultOptions {

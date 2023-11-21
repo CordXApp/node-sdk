@@ -1,6 +1,5 @@
 import * as SystemTypes from '../typings/system/'
 import * as SystemInterface from '../interfaces/system'
-import * as Options from '../interfaces/defaults'
 import { EventEmitter } from 'events'
 import axios from 'axios'
 
@@ -10,7 +9,6 @@ import axios from 'axios'
  * @extends EventEmitter
  */
 export class CordXSystem extends EventEmitter {
-    private _opts: Options.ClientOptions
     private _defaultURL: string
     private _defaultVersion: string
     private _apiVersion: string
@@ -19,15 +17,14 @@ export class CordXSystem extends EventEmitter {
     public _copyright: string
     public _docs: string
 
-    constructor(options: Options.ClientOptions) {
+    constructor() {
         super()
 
         this._docs = 'https://docs.cordx.lol'
         this._defaultURL = 'https://api.cordx.lol'
         this._defaultVersion = 'v3'
 
-        this._opts = options
-        this._apiVersion = options.apiVersion || this._defaultVersion
+        this._apiVersion = this._defaultVersion
         this._copyright = '© 2023 - Infinity Development'
 
         this._httpClient = axios.create({
@@ -35,6 +32,17 @@ export class CordXSystem extends EventEmitter {
             timeoutErrorMessage: 'Request timed out!',
             timeout: 10000
         })
+
+        this._httpClient.interceptors.response.use((response: any) => response, (error: any) => {
+
+            let errMsg;
+
+            if (error.response.status == 401) errMsg = 'Whoops, you do not have access to this endpoint. Sorry about that!';
+            else if (error.response.status == 404) error = 'Hang on there, we were unable to locate whatever it is you are looking for!';
+            else if (error.response.status === 500) error = 'Whoops, something went seriously wrong with this request!'
+
+            throw Error('[cordxapp/client:system]: ' + errMsg);
+          });
     }
 
     /**
@@ -42,8 +50,6 @@ export class CordXSystem extends EventEmitter {
      */
     public async Statistics(): Promise<SystemInterface.BaseStats | SystemInterface.CachedStats> {
         const res = await this._httpClient.get('/system/stats')
-
-        if (res.data.error) throw new Error(`[@cordxapp/client:error]: ${res.data.error}`)
 
         return res.data
     }
@@ -54,24 +60,11 @@ export class CordXSystem extends EventEmitter {
     public async Versions(): Promise<SystemInterface.Versions> {
         const res = await this._httpClient.get('/system/check/versions')
 
-        return res.response
+        return res.data
     }
 
     public async Status(): Promise<SystemInterface.StatusPage> {
         const res = await this._httpClient.get('/status/summary')
-
-        if (res.data.error) throw new Error(`[@cordxapp/client:error]: ${res.data.error}`)
-
-        return res.data
-    }
-
-    public async ComponentStatusFilter(
-        auth: string,
-        method: SystemTypes.Status
-    ): Promise<SystemInterface.BaseComponents> {
-        const res = await this._httpClient.get(`/status/comp/filter/${auth}?=${method}`)
-
-        if (res.data.error) throw new Error(`[@cordxapp/client:error]: ${res.data.error}`)
 
         return res.data
     }

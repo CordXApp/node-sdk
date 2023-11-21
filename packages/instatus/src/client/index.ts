@@ -18,9 +18,7 @@ export class InstatusClient extends EventEmitter {
     private _defaultVersion: string
     private _apiKey: string
     private _apiVersion: string
-    private _pageId: string
     private _httpClient: any
-
     public _disclaimer: string
     public _copyright: string
     public _docs: string
@@ -32,16 +30,17 @@ export class InstatusClient extends EventEmitter {
         this._defaultVersion = 'v2'
 
         if (!options.apiKey) {
-            throw new ReferenceError('[@cordxapp/instatus]: Client should have a valid instatus api key')
+            throw new ReferenceError('[@cordxapp/instatus]: client should have a valid instatus api key or user api key')
         }
 
         this._opts = options
         this._apiKey = options.apiKey
         this._apiVersion = options.apiVersion || this._defaultVersion
-        this._pageId = options.pageId
         this._copyright = '© 2023 - Infinity Development'
         this._disclaimer = '"@cordxapp/instatus" is not owned, endorsed by or affiliated with https://instatus.com!'
         this._docs = 'https://cordxapp.github.io/node-sdk/modules/instatus_src.html'
+
+        if (this._apiVersion !== 'v1' && this._apiVersion !== 'v2') throw new RangeError(`[@cordxapp/instatus]: 'apiVersion' should be one of 'v1' or 'v2'`);
 
         this._httpClient = axios.create({
             baseURL: `${this._defaultURL}/${this._apiVersion}`,
@@ -49,6 +48,18 @@ export class InstatusClient extends EventEmitter {
                 Authorization: `Bearer ${this._apiKey}`
             }
         })
+
+        this._httpClient.interceptors.response.use((response: any) => response, (error: any) => {
+
+            let errMsg;
+
+            if (error.response.status == 401) errMsg = 'Invalid api key, if you are trying to access a user route you need a instatus user api key!';
+            else if (error.response.status == 404 && this._apiVersion == 'v1') error = 'This api endpoint does not exist on v1, please switch to v2';
+            else if (error.response.status === 404 && this._apiVersion == 'v2') error = 'This api endpoint does not exist on v2, please switch to v1';
+            else if (error.response.status === 500) error = 'Whoops, something went seriously wrong with this request!'
+
+            throw Error('[cordxapp/instatus]: ' + errMsg);
+          });
     }
 
     /**
@@ -66,9 +77,8 @@ export class InstatusClient extends EventEmitter {
      * instatus.getUserProfile();
      */
     public async getUserProfile(): Promise<User.UserProfile> {
-        const res = await this._httpClient.get('/user')
 
-        if (res.data.error) throw new Error(`[@cordxapp/instatus:error]: ${res.data.error}`)
+        const res = await this._httpClient.get('/user');
 
         return res.data
     }
@@ -88,9 +98,8 @@ export class InstatusClient extends EventEmitter {
      * instatus.getStatusPages();
      */
     public async getStatusPages(): Promise<Page.Information[]> {
+        
         const res = await this._httpClient.get('/pages')
-
-        if (res.data.error) throw new Error(`[@cordxapp/instatus:error]: ${res.data.error}`)
 
         return res.data
     }
@@ -124,8 +133,6 @@ export class InstatusClient extends EventEmitter {
 
         const res = await this._httpClient.get(`/pages?page=${query.page}&per_page=${query.per_page}`)
 
-        if (res.data.error) throw new Error(`[@cordxapp/instatus:error]: ${res.data.error}`)
-
         return res.data
     }
 
@@ -139,21 +146,17 @@ export class InstatusClient extends EventEmitter {
      * const instatus = new InstatusClient({
      *     apiKey: 'API_KEY',
      *     apiVersion: 'API_VERSION',
-     *     pageId: 'PAGE_ID'
      * });
      *
-     * instatus.getComponent({ id: 'some_comp_id' });
+     * instatus.getComponent({ 
+     *    pageId: 'some_status_page_id' 
+     * });
      */
-    public async getComponents(pageId: InstatusOptions): Promise<Page.Components[]> {
-        if (!this._pageId) {
-            throw new ReferenceError(
-                '[@cordxapp/instatus:error]: please provide a valid page id in the client options to use this method'
-            )
-        }
+    public async getComponent({ pageId }: InstatusOptions): Promise<Page.Components[]> {
+
+        if (!pageId) throw new ReferenceError('[@cordxapp/instatus:error]: invalid `pageId` provided!')
 
         const res = await this._httpClient.get(`/${pageId}/components`)
-
-        if (res.data.error) throw new Error(`[@cordxapp/instatus:error]: ${res.data.error}`)
 
         return res.data
     }
@@ -161,7 +164,7 @@ export class InstatusClient extends EventEmitter {
     /**
      * GET A STATUS PAGE COMPONENT BY ID
      * @param id the component id
-     * @requires id
+     * @param pageId the page id
      * @returns component information
      * @example
      * const { InstatusClient } = require('@cordxapp/instatus');
@@ -173,15 +176,15 @@ export class InstatusClient extends EventEmitter {
      *
      * instatus.getComponent({ id: 'some_component_id' });
      */
-    public async getComponent({ id }: Components.Fetch): Promise<Page.Components> {
+    public async getComponents({id, pageId }: Components.Fetch): Promise<Page.Components> {
+
         if (!id) throw new ReferenceError('[@cordxapp/instatus:error]: please provide a component id')
-        if (typeof id !== 'string') {
-            throw new TypeError('[@cordxapp/instatus:error]: component id should be a valid string')
-        }
+        if (typeof id !== 'string') throw new TypeError('[@cordxapp/instatus:error]: component id should be a valid string')
 
-        const res = await this._httpClient.get(`/${this._pageId}/components/${id}`)
+        if (!pageId) throw new ReferenceError('please provide the page id for this component')
+        if (typeof pageId !== 'string') throw new TypeError('`pageId` should be a valid string')
 
-        if (res.data.error) throw new Error(`[@cordxapp/instatus:error]: ${res.data.error}`)
+        const res = await this._httpClient.get(`/${pageId}/components/${id}`)
 
         return res.data
     }
@@ -195,16 +198,14 @@ export class InstatusClient extends EventEmitter {
      *
      * const instatus = new InstatusClient({
      *     apiKey: 'API_KEY',
-     *     apiVersion: 'API_VERSION',
-     *     pageId: 'STATUS_PAGE_ID'
+     *     apiVersion: 'API_VERSION'
      * });
      *
      * instatus.getIncidents();
      */
-    public async getIncidents(): Promise<Incidents.Base[]> {
-        const res = await this._httpClient.get(`/${this._pageId}/incidents`)
+    public async getIncidents({ pageId }: InstatusOptions): Promise<Incidents.Base[]> {
 
-        if (res.data.error) throw new Error(`[@cordxapp/instatus:error]: ${res.data.error}`)
+        const res = await this._httpClient.get(`/${pageId}/incidents`)
 
         return res.data
     }
@@ -218,8 +219,7 @@ export class InstatusClient extends EventEmitter {
      *
      * const instatus = new InstatusClient({
      *     apiKey: 'API_KEY',
-     *     apiVersion: 'API_VERSION',
-     *     pageId: 'STATUS_PAGE_ID'
+     *     apiVersion: 'API_VERSION'
      * });
      *
      * instatus.getQueriedIncidents({
@@ -227,40 +227,28 @@ export class InstatusClient extends EventEmitter {
      *     per_page: 20
      * });
      */
-    public async getQueriedIncidents(query?: {
-        page: Incidents.Query
-        per_page: Incidents.Query
-    }): Promise<Incidents.Base[]> {
-        if (!query || query == undefined) {
-            throw new ReferenceError('[@cordxapp/instatus:error]: please provide a valid query')
-        } else if (typeof query.page !== 'number') {
-            throw new TypeError('[@cordxapp/instatus:error]: page param should be a valid number')
-        } else if (typeof query.per_page !== 'number') {
-            throw new TypeError('[@cordxapp/instatus:error]: page param should be a valid number')
-        } else if (typeof query !== 'object') {
-            throw new TypeError(
-                '[@cordxapp/instatus:error]: query should be a valid object | Ex: getQueriedIncidents({ page, per_page })'
-            )
-        }
+    public async getQueriedIncidents(pageId: InstatusOptions, query?: { page: Incidents.Query, per_page: Incidents.Query }): Promise<Incidents.Base[]> {
+        
+        if (!pageId) throw new ReferenceError('please provide the page id for this component')
+        if (typeof pageId !== 'string') throw new TypeError('`pageId` should be a valid string')
 
-        const res = await this._httpClient.get(
-            `/${this._pageId}/incidents?page=${query.page}&per_page=${query.per_page}`
-        )
+        if (!query || query == undefined) throw new ReferenceError('[@cordxapp/instatus:error]: please provide a valid query')
+        else if (typeof query.page !== 'number') throw new TypeError('[@cordxapp/instatus:error]: page param should be a valid number')
+        else if (typeof query.per_page !== 'number') throw new TypeError('[@cordxapp/instatus:error]: page param should be a valid number')
+        else if (typeof query !== 'object') throw new TypeError('[@cordxapp/instatus:error]: query should be a valid object | Ex: getQueriedIncidents({ page, per_page })')
 
-        if (res.data.error) throw new Error(`[@cordxapp/instatus:error]: ${res.data.error}`)
+        const res = await this._httpClient.get(`/${pageId}/incidents?page=${query.page}&per_page=${query.per_page}`)
 
         return res.data
     }
 
-    public async getIncident({ id }: Incidents.Base): Promise<Incidents.Base> {
+    public async getIncident(pageId: InstatusOptions, id: Incidents.Base): Promise<Incidents.Base> {
         if (!id) throw new ReferenceError('[@cordxapp/instatus:error]: please provide a valid incident id')
         if (typeof id !== 'string') {
             throw new TypeError('[@cordxapp/instatus:error]: incident id should be a valid string')
         }
 
-        const res = await this._httpClient.get(`${this._pageId}/incidents/${id}`)
-
-        if (res.data.error) throw new Error(`[@cordxapp/instatus:error]: ${res.data.error}`)
+        const res = await this._httpClient.get(`${pageId}/incidents/${id}`)
 
         return res.data
     }
@@ -270,25 +258,17 @@ export class InstatusClient extends EventEmitter {
      * @param query
      * @returns array of status page subscribers
      */
-    public async getSubscribers(query?: {
-        page: Subscribers.Query
-        per_page: Subscribers.Query
-    }): Promise<Subscribers.Base> {
-        if (!query || query == undefined) {
-            throw new ReferenceError('[@cordxapp/instatus:error]: please provide a valid query')
-        } else if (typeof query.page !== 'number') {
-            throw new TypeError('[@cordxapp/instatus:error]: page param should be a valid number')
-        } else if (typeof query.per_page !== 'number') {
-            throw new TypeError('[@cordxapp/instatus:error]: page param should be a valid number')
-        } else if (typeof query !== 'object') {
-            throw new TypeError(
-                '[@cordxapp/instatus:error]: query should be a valid object | Ex: getQueriedIncidents({ page, per_page })'
-            )
-        }
+    public async getSubscribers(pageId: InstatusOptions, query?: { page: Subscribers.Query, per_page: Subscribers.Query }): Promise<Subscribers.Base> {
 
-        const res = await this._httpClient.get(`/${this._pageId}/subscribers`)
+        if (!pageId) throw new ReferenceError('please provide the page id for this component')
+        if (typeof pageId !== 'string') throw new TypeError('`pageId` should be a valid string')
+        
+        if (!query || query == undefined) throw new ReferenceError('[@cordxapp/instatus:error]: please provide a valid query')
+        else if (typeof query.page !== 'number') throw new TypeError('[@cordxapp/instatus:error]: page param should be a valid number')
+        else if (typeof query.per_page !== 'number') throw new TypeError('[@cordxapp/instatus:error]: page param should be a valid number')
+        else if (typeof query !== 'object') throw new TypeError('[@cordxapp/instatus:error]: query should be a valid object | Ex: getQueriedIncidents({ page, per_page })')
 
-        if (res.data.error) throw new Error(`[@cordxapp/instatus:error]: ${res.data.error}`)
+        const res = await this._httpClient.get(`/${pageId}/subscribers`)
 
         return res.data
     }

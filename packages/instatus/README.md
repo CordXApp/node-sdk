@@ -14,9 +14,21 @@ npm install @cordxapp/instatus
 ### Getting Started
 
 ```js
+/** ES6 */
 import { InstatusClient } from '@cordxapp/instatus';
 
-const instatus = new InstatusClient({ apiVersion: '2' });
+const instatus = new InstatusClient({ 
+    apiKey: 'YOUR_INSTATUS_API_KEY'
+    apiVersion: '2' 
+});
+```
+
+```js
+const { InstatusClient } = require('@cordxapp/instatus');
+const instatus = new InstatusClient({ 
+    apiKey: 'YOUR_INSTATUS_API_KEY'
+    apiVersion: '2' 
+});
 ```
 
 ---

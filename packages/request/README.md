@@ -1,5 +1,12 @@
 # @cordxapp/request
-Simple request logic used in our software development kit
+
+Custom logic for handling requests how you want to!
+
+---
+
+## Documentation
+- [User Guides](https://help.cordx.lol/docs/npm/request)
+- [TypeDocs](https://cordxapp.github.io/node-sdk/modules/request_src.html)
 
 ---
 

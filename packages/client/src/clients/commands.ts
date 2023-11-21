@@ -1,16 +1,13 @@
 import * as CommandTypings from '../typings/commands/index'
 import * as CommandInterface from '../interfaces/commands'
-import * as Options from '../interfaces/defaults'
 import { EventEmitter } from 'events'
 import axios from 'axios'
 
 /**
  * base client for all of the get methods/endpoints
- * @interface Defaults.ClientOptions
  * @extends EventEmitter
  */
 export class CordXCommands extends EventEmitter {
-    private _opts: Options.ClientOptions
     private _defaultURL: string
     private _defaultVersion: string
     private _apiVersion: string
@@ -19,29 +16,42 @@ export class CordXCommands extends EventEmitter {
     public _copyright: string
     public _docs: string
 
-    constructor(options: Options.ClientOptions) {
+    constructor() {
         super()
 
         this._docs = 'https://docs.cordx.lol'
         this._defaultURL = 'https://api.cordx.lol'
         this._defaultVersion = 'v3'
 
-        this._opts = options
-        this._apiVersion = options.apiVersion || this._defaultVersion
+        this._apiVersion = this._defaultVersion
         this._copyright = '© 2023 - Infinity Development'
 
         this._httpClient = axios.create({
             baseURL: `${this._defaultURL}/${this._apiVersion}`
         })
+
+        this._httpClient.interceptors.response.use((response: any) => response, (error: any) => {
+
+            let errMsg;
+
+            if (error.response.status == 401) errMsg = 'Whoops, you do not have access to this endpoint. Sorry about that!';
+            else if (error.response.status == 404) error = 'Hang on there, we were unable to locate whatever it is you are looking for!';
+            else if (error.response.status === 500) error = 'Whoops, something went seriously wrong with this request!'
+
+            throw Error('[cordxapp/client:commands]: ' + errMsg);
+          });
     }
 
     /**
      * GENERATES A 8 BALL RESPONSE
      */
-    public async Run8BallCommand(): Promise<CommandInterface.Generate8Ball> {
+    public async Run8BallCommand(question: CommandInterface.Required8BallParams): Promise<CommandInterface.Generate8Ball> {
+
+        if (!question) throw new ReferenceError('[cordxapp/client:commands]: error, please ask the 8 ball a question!');
+
         const res = await this._httpClient.get('/client/8ball')
 
-        return res.response
+        return res.data
     }
 
     /**
@@ -50,7 +60,7 @@ export class CordXCommands extends EventEmitter {
     public async RunAdviceCommand(): Promise<CommandInterface.GenerateAdvice> {
         const res = await this._httpClient.get('/client/advice/random')
 
-        return res.advice
+        return res.data
     }
 
     /**
@@ -59,10 +69,7 @@ export class CordXCommands extends EventEmitter {
     public async RunFactCommand(): Promise<CommandInterface.GenerateFacts> {
         const res = await this._httpClient.get('/client/facts/random')
 
-        return {
-            fact: res.fact,
-            source: res.source
-        }
+        return res.data
     }
 
     /**
@@ -71,15 +78,7 @@ export class CordXCommands extends EventEmitter {
     public async RunMemeCommand(type: CommandTypings.MemeTypes): Promise<CommandInterface.GenerateMeme> {
         const res = await this._httpClient.get(`/client/${type}`)
 
-        return {
-            title: res.title,
-            image: res.image,
-            link: res.link,
-            author: res.author,
-            upvotes: res.upvotes,
-            comments: res.comments,
-            nsfw: res.nsfw
-        }
+        return res.data
     }
 
     /**
@@ -88,6 +87,6 @@ export class CordXCommands extends EventEmitter {
     public async RunYoMommaCommand(): Promise<CommandInterface.GenerateYoMommaJoke> {
         const res = await this._httpClient.get('/client/yomomma')
 
-        return res.joke
+        return res.data
     }
 }
