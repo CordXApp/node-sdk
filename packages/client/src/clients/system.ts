@@ -37,12 +37,13 @@ export class CordXSystem extends EventEmitter {
             (error: any) => {
                 let errMsg
 
-                if (error.response.status == 401)
+                if (error.response.status == 401) {
                     errMsg = 'Whoops, you do not have access to this endpoint. Sorry about that!'
-                else if (error.response.status == 404)
+                } else if (error.response.status == 404) {
                     error = 'Hang on there, we were unable to locate whatever it is you are looking for!'
-                else if (error.response.status === 500)
+                } else if (error.response.status === 500) {
                     error = 'Whoops, something went seriously wrong with this request!'
+                }
 
                 throw Error('[cordxapp/client:system]: ' + errMsg)
             }
