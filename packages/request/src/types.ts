@@ -1,4 +1,4 @@
-import { Dispatcher } from 'undici'
+import { Dispatcher } from 'undici';
 
 export interface Request {
     url: string
