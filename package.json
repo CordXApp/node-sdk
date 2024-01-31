@@ -41,10 +41,10 @@
     "format": "prettier -w ./packages/**/src/**/*.{ts,tsx,js,jsx}",
     "linter": "eslint --fix ./packages/**/src/**/*.{ts,tsx,js,jsx}",
     "patch": "lerna publish prerelease",
-    "publish": "lerna publish --no-git-reset --yes",
+    "publish": "lerna publish --yes && git add . && git commit -m 'chore: version bump and changelog update'",
     "test": "lerna run test",
     "validate": "prettier -c ./packages/**/src/**/*.{ts,tsx,js,jsx}",
-    "version": "lerna version"
+    "version": "lerna version --no-git-reset --yes"
   },
   "homepage": "https://cordxapp.github.io/node-sdk/index.html",
   "author": {
