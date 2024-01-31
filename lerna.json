@@ -15,6 +15,7 @@
       "signGitCommit": true,
       "signGitTag": true,
       "noGitTagVersion": true,
+      "forcePublish": ["*"],
       "noPush": true
     },
     "bootstrap": {
@@ -27,5 +28,5 @@
   "packages": [
     "packages/*"
   ],
-  "version": "0.4.10"
+  "version": "0.4.11"
 }
