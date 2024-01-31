@@ -34,6 +34,12 @@ export class CordXSnowflake implements ICordXSnowflake {
         if (this._debug) CordXSnowflake.logs.debug(`Snowflake initialized with options: ${JSON.stringify(options)}`)
     }
 
+    /**
+     * @function generate
+     * @description Generates a new snowflake ID
+     * @returns {string} Snowflake ID
+     * @memberof CordXSnowflake
+     */
     public generate(): string {
         let timestamp = BigInt(this.timeGen())
 
@@ -74,6 +80,13 @@ export class CordXSnowflake implements ICordXSnowflake {
         return id
     }
 
+    /**
+     * @function decompose
+     * @description Decomposes a snowflake ID into its components
+     * @param {string} id Snowflake ID
+     * @returns {{ timestamp: number; workerId: number; processId: number; sequence: number }} Snowflake components
+     * @memberof CordXSnowflake
+     */
     public decompose(id: string): { timestamp: number; workerId: number; processId: number; sequence: number } {
         const idNumber = BigInt(id)
         const timestamp = Number((idNumber >> 22n) + BigInt(this._epoch))

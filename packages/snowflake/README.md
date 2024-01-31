@@ -1,5 +1,5 @@
 # CordXSnowflake
-CordXSnowflake is a simple yet customizable module for generating and decomposing unique ID strings, similar to Twitter's Snowflake IDs. 
+CordXSnowflake is a simple yet customizable module for generating and decomposing unique ID strings, similar to Twitter and Discord's Snowflake IDs. 
 Snowflake IDs are a way of generating unique, sortable identifiers distributedly, as they contain a timestamp component and machine identifier.
 
 ## Table of Contents
