@@ -44,7 +44,7 @@
     "publish": "lerna publish --yes && git add . && git commit -m 'chore: version bump and changelog update'",
     "test": "lerna run test",
     "validate": "prettier -c ./packages/**/src/**/*.{ts,tsx,js,jsx}",
-    "version": "lerna version --no-git-reset --yes"
+    "version": "lerna version"
   },
   "homepage": "https://cordxapp.github.io/node-sdk/index.html",
   "author": {
