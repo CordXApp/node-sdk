@@ -6,13 +6,22 @@
   ],
   "devDependencies": {
     "@types/node": "^18.15.5",
+    "@types/busboy": "^0.2.3",
+    "@types/lodash": "^4.14.165",
     "@types/node-fetch": "^2.5.10",
     "@typescript-eslint/parser": "^6.4.0",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "axios": "^1.4.0",
     "chalk": "3.0.0",
     "eslint": "^8.47.0",
+    "busboy": "^0.3.1",
+    "fastify": "^3.8.0",
+    "fastify-plugin": "^3.0.0",
+    "form-data": "^3.0.0",
+    "form-urlencoded": "^4.2.1",
+    "lodash": "^4.17.20",
     "lerna": "^7.1.5",
+    "moment": "^2.30.1",
     "node-fetch": "^2.6.1",
     "ora": "4.0.0",
     "prettier": "^3.0.2",
@@ -34,7 +43,8 @@
     "patch": "npm run linter && npm run format && lerna publish prerelease",
     "publish": "npm run linter && npm run format && lerna publish",
     "test": "lerna run test",
-    "validate": "prettier -c ./packages/**/src/**/*.{ts,tsx,js,jsx}"
+    "validate": "prettier -c ./packages/**/src/**/*.{ts,tsx,js,jsx}",
+    "version": "lerna version"
   },
   "homepage": "https://cordxapp.github.io/node-sdk/index.html",
   "author": {

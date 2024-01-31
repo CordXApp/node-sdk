@@ -4,7 +4,8 @@
         "packages/client/src/index.ts",
         "packages/instatus/src/index.ts",
         "packages/pastes/src/index.ts",
-        "packages/request/src/index.ts"
+        "packages/request/src/index.ts",
+        "packages/snowflake/src/index.ts"
     ],
     "readme": "./README.md",
     "name": "CordX Modules",

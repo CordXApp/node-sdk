@@ -162,7 +162,7 @@ export class InstatusClient extends EventEmitter {
      *    pageId: 'some_status_page_id'
      * });
      */
-    public async getComponent({ pageId }: InstatusOptions): Promise<Page.Components[]> {
+    public async getComponents({ pageId }: Components.Fetch): Promise<Page.Components[]> {
         if (!pageId) throw new ReferenceError('[@cordxapp/instatus:error]: invalid `pageId` provided!')
 
         const res = await this._httpClient.get(`/${pageId}/components`)
@@ -185,7 +185,7 @@ export class InstatusClient extends EventEmitter {
      *
      * instatus.getComponent({ id: 'some_component_id' });
      */
-    public async getComponents({ id, pageId }: Components.Fetch): Promise<Page.Components> {
+    public async getComponent({ id, pageId }: Components.Fetch): Promise<Page.Components> {
         if (!id) throw new ReferenceError('[@cordxapp/instatus:error]: please provide a component id')
         if (typeof id !== 'string') {
             throw new TypeError('[@cordxapp/instatus:error]: component id should be a valid string')

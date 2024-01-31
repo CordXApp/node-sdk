@@ -1,0 +1,29 @@
+{
+    "name": "@cordxapp/snowflake",
+    "version": "",
+    "description": "A simple snowflake generator",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "author": "Toxic Dev",
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "tsc",
+        "docs": "typedoc",
+        "test": "node ./tests/base.test.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/CordXApp/node-sdk.git"
+    },
+    "bugs": {
+        "url": "https://github.com/CordXApp/node-sdk/issues"
+    },
+    "homepage": "https://cordxapp.github.io/node-sdk/modules/snowflake_src.html",
+    "dependencies": {
+        "@types/node": "^20.5.1",
+        "moment": "^2.30.1",
+        "typescript": "^5.1.6"
+    }
+}
