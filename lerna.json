@@ -5,7 +5,17 @@
       "conventionalCommits": true,
       "npmClient": "npm",
       "noGitReset": true,
-      "allowBranch": ["*"]
+      "allowBranch": [
+        "*"
+      ]
+    },
+    "version": {
+      "conventionalCommits": true,
+      "message": "chore(release): publish %s",
+      "signGitCommit": true,
+      "signGitTag": true,
+      "noGitTagVersion": true,
+      "noPush": true
     },
     "bootstrap": {
       "loglevel": "info",
@@ -17,5 +27,5 @@
   "packages": [
     "packages/*"
   ],
-  "version": "0.4.8"
+  "version": "0.4.10"
 }
