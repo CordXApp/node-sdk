@@ -40,7 +40,7 @@
     "docs:gen": "typedoc",
     "format": "prettier -w ./packages/**/src/**/*.{ts,tsx,js,jsx}",
     "linter": "eslint --fix ./packages/**/src/**/*.{ts,tsx,js,jsx}",
-    "patch": "npm run linter && npm run format && lerna publish prerelease",
+    "patch": "lerna publish prerelease",
     "publish": "lerna publish",
     "test": "lerna run test",
     "validate": "prettier -c ./packages/**/src/**/*.{ts,tsx,js,jsx}",
