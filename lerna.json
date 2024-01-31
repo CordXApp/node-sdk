@@ -1,32 +1,23 @@
 {
-  "command": {
-    "publish": {
-      "registry": "https://registry.npmjs.org/",
-      "conventionalCommits": true,
-      "npmClient": "npm",
-      "noGitReset": true,
-      "allowBranch": [
-        "*"
-      ]
+    "command": {
+        "publish": {
+            "registry": "https://registry.npmjs.org/",
+            "conventionalCommits": true,
+            "npmClient": "npm",
+            "noGitReset": true,
+            "allowBranch": ["*"]
+        },
+        "version": {
+            "conventionalCommits": true,
+            "message": "chore(release): publish %s",
+            "forcePublish": ["*"],
+            "noPush": true
+        },
+        "bootstrap": {
+            "loglevel": "info",
+            "npmClientArgs": ["--no-package-lock"]
+        }
     },
-    "version": {
-      "conventionalCommits": true,
-      "message": "chore(release): publish %s",
-      "signGitCommit": true,
-      "signGitTag": true,
-      "noGitTagVersion": true,
-      "forcePublish": ["*"],
-      "noPush": true
-    },
-    "bootstrap": {
-      "loglevel": "info",
-      "npmClientArgs": [
-        "--no-package-lock"
-      ]
-    }
-  },
-  "packages": [
-    "packages/*"
-  ],
-  "version": "0.4.11"
+    "packages": ["packages/*"],
+    "version": "0.4.13"
 }
