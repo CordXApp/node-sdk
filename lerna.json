@@ -3,7 +3,9 @@
     "publish": {
       "registry": "https://registry.npmjs.org/",
       "conventionalCommits": true,
-      "npmClient": "npm"
+      "npmClient": "npm",
+      "noGitReset": true,
+      "allowBranch": ["*"]
     },
     "bootstrap": {
       "loglevel": "info",
