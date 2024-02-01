@@ -15,16 +15,19 @@ export interface Versions {
         api: string
         client: string
         website: string
+        documentation: string
     }
     newest: {
         api: string
         client: string
         website: string
+        documentation: string
     }
     stable: {
         api: string
         client: string
         website: string
+        documentation: string
     }
 }
 

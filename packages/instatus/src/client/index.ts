@@ -152,15 +152,12 @@ export class InstatusClient extends EventEmitter {
      * @returns array of status page components
      * @example
      * const { InstatusClient } = require('@cordxapp/instatus');
-     *
      * const instatus = new InstatusClient({
-     *     apiKey: 'API_KEY',
-     *     apiVersion: 'API_VERSION',
+     *       apiKey: 'API_KEY',
+     *      apiVersion: 'API_VERSION'
      * });
-     *
-     * instatus.getComponent({
-     *    pageId: 'some_status_page_id'
-     * });
+     * 
+     * instatus.getComponents({ pageId: 'some_page_id' });
      */
     public async getComponents({ pageId }: Components.Fetch): Promise<Page.Components[]> {
         if (!pageId) throw new ReferenceError('[@cordxapp/instatus:error]: invalid `pageId` provided!')
@@ -177,13 +174,12 @@ export class InstatusClient extends EventEmitter {
      * @returns component information
      * @example
      * const { InstatusClient } = require('@cordxapp/instatus');
-     *
      * const instatus = new InstatusClient({
-     *     apiKey: 'API_KEY',
-     *     apiVersion: 'API_VERSION'
+     *       apiKey: 'API_KEY',
+     *       apiVersion: 'API_VERSION'
      * });
-     *
-     * instatus.getComponent({ id: 'some_component_id' });
+     * 
+     * instatus.getComponent({ id: 'some_component_id', pageId: 'some_page_id' });
      */
     public async getComponent({ id, pageId }: Components.Fetch): Promise<Page.Components> {
         if (!id) throw new ReferenceError('[@cordxapp/instatus:error]: please provide a component id')
