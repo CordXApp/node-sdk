@@ -1,6 +1,6 @@
 {
     "name": "@cordxapp/snowflake",
-    "version": "0.4.14",
+    "version": "0.4.17",
     "description": "A simple snowflake generator",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",

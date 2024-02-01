@@ -1,6 +1,6 @@
 {
     "name": "@cordxapp/pastes",
-    "version": "0.4.14",
+    "version": "0.4.17",
     "description": "Official module for posting code snippets, text and more to our bin",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
