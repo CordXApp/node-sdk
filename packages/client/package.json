@@ -1,6 +1,6 @@
 {
     "name": "@cordxapp/client",
-    "version": "0.4.17",
+    "version": "0.4.16",
     "description": "Custom module for interacting with the CordX API",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
@@ -26,5 +26,5 @@
         "axios": "^1.4.0",
         "typescript": "^5.1.6"
     },
-    "gitHead": "992d045da06870f0bf6423521820fdd75b412b1b"
+    "gitHead": "324edb3cd05448c36a985e46ea613f76f6ff4ccb"
 }

@@ -14,20 +14,26 @@ export interface Versions {
     current: {
         api: string
         client: string
-        website: string
+        dns: string
         documentation: string
+        proxy: string
+        website: string
     }
     newest: {
         api: string
         client: string
-        website: string
+        dns: string
         documentation: string
+        proxy: string
+        website: string
     }
     stable: {
         api: string
         client: string
-        website: string
+        dns: string
         documentation: string
+        proxy: string
+        website: string
     }
 }
 
