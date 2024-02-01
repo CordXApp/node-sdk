@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.19](https://github.com/CordXApp/node-sdk/compare/v0.4.17...v0.4.19) (2024-02-01)
+
+**Note:** Version bump only for package root
+
 ## [0.4.17](https://github.com/CordXApp/node-sdk/compare/v0.4.15...v0.4.17) (2024-02-01)
 
 **Note:** Version bump only for package root
