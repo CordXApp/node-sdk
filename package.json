@@ -1,0 +1,42 @@
+{
+  "name": "cordxapp",
+  "private": true,
+  "license": "AGPL-3.0-only",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "lerna run build",
+    "document": "typedoc",
+    "bootstrap": "lerna exec bun install",
+    "create": "npx lerna create",
+    "patch": "lerna publish prerelease",
+    "publish": "lerna publish",
+    "prepare": "husky",
+    "test": "lerna run test"
+  },
+  "dependencies": {
+    "typedoc": "^0.26.11"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "@typescript-eslint/parser": "^8.13.0",
+    "@typescript-eslint/eslint-plugin": "^8.13.0",
+    "eslint": "^9.14.0",
+    "husky": "^9.1.7",
+    "lerna": "^8.1.9",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "typescript": "5.6.3"
+  },
+  "lint-staged": {
+    "./packages/**/*.{ts,tsx,js,jsx}": [
+      "eslint --fix .",
+      "prettier --write ."
+    ],
+    "./packages/**/*.{ts,tsx,js,jsx,json,css,scss,md}": [
+      "prettier --write ."
+    ]
+  },
+  "packageManager": "bun@1.1.34"
+}

@@ -1,0 +1,16 @@
+{
+    "out": "./docs/",
+    "entryPoints": [
+        "packages/lintydeps/src/index.ts",
+        "packages/prettierlogs/src/index.ts"
+    ],
+    "readme": "./pages/home.md",
+    "name": "cordxapp",
+    "darkHighlightTheme": "dark-plus",
+    "lightHighlightTheme": "light-plus",
+    "githubPages": true,
+    "excludeExternals": false,
+    "excludePrivate": true,
+    "excludeInternal": false,
+    "theme": "default"
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
+  "command": {
+    "publish": {
+      "registry": "https://registry.npmjs.org/",
+      "npmClient": "bun"
+    },
+    "version": {
+      "allowBranch": "master",
+      "message": "chore(release): new version %s",
+      "npmClient": "bun",
+      "exact": true
+    },
+    "bootstrap": {
+      "logLevel": "info"
+    }
+  },
+  "npmClient": "bun",
+  "packages": [
+    "packages/*"
+  ],
+  "version": "1.0.0"
+}

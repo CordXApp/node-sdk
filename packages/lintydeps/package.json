@@ -1,0 +1,48 @@
+{
+    "name": "@cordxapp/lintydeps",
+    "version": "0.0.0",
+    "description": "Finds and reports missing or unused dependencies and dev dependencies",
+    "author": "TheRealToxicDev",
+    "main": "./dist/index.js",
+    "files": [
+        "dist/**/*",
+        "src/**/*"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "test": "node ./tests/base.test.js"
+    },
+    "bin": {
+        "linty": "./bin/linty.js"
+    },
+    "keywords": [
+        "npm",
+        "dependencies",
+        "devDependencies",
+        "dependencies-check",
+        "devDependencies-check",
+        "dependencies-lint",
+        "depcheck",
+        "check"
+    ],
+    "dependencies": {
+        "chalk": "^5.3.0",
+        "js-yaml": "^4.1.0",
+        "ora": "^8.1.1",
+        "strip-json-comments": "^5.0.1",
+        "superagent": "^10.1.1",
+        "yargs": "^17.7.2"
+    },
+    "devDependencies": {
+        "@types/chalk": "^2.2.4",
+        "@types/depcheck": "^0.9.4",
+        "@types/js-yaml": "^4.0.9",
+        "@types/node": "^22.9.0",
+        "@types/node-fetch": "^2.6.12",
+        "@types/superagent": "^8.1.9",
+        "@types/yargs": "^17.0.33",
+        "depcheck": "^1.4.7",
+        "typedoc": "^0.26.11",
+        "typescript": "^5.6.3"
+    }
+}
