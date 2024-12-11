@@ -1,8 +1,6 @@
 {
     "out": "./docs/",
-    "entryPoints": [
-        "packages/*/src/index.ts"
-    ],
+    "entryPoints": ["packages/*/src/index.ts"],
     "readme": "README.md",
     "name": "cordxapp",
     "darkHighlightTheme": "dark-plus",

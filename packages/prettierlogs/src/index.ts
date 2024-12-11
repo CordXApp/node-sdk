@@ -1,1 +1,1 @@
-export { prettier } from './client/prettier';
+export { prettier } from './client/prettier'
