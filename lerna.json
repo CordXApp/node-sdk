@@ -1,29 +1,23 @@
 {
-  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
-  "command": {
-    "publish": {
-      "registry": "https://registry.npmjs.org/",
-      "npmClient": "npm",
-      "ignoreChanges": [
-        "**/package.json",
-        "**/tsconfig.json",
-        "**/README.md"
-      ],
-      "yes": true
+    "$schema": "node_modules/lerna/schemas/lerna-schema.json",
+    "command": {
+        "publish": {
+            "registry": "https://registry.npmjs.org/",
+            "npmClient": "npm",
+            "ignoreChanges": ["**/package.json", "**/tsconfig.json", "**/README.md"],
+            "yes": true
+        },
+        "version": {
+            "message": "chore(release): new version %s",
+            "npmClient": "npm",
+            "exact": true,
+            "allowBranch": "*"
+        },
+        "bootstrap": {
+            "logLevel": "info"
+        }
     },
-    "version": {
-      "message": "chore(release): new version %s",
-      "npmClient": "npm",
-      "exact": true,
-      "allowBranch": "*"
-    },
-    "bootstrap": {
-      "logLevel": "info"
-    }
-  },
-  "npmClient": "npm",
-  "packages": [
-    "packages/*"
-  ],
-  "version": "1.0.4"
+    "npmClient": "npm",
+    "packages": ["packages/*"],
+    "version": "1.0.5"
 }
