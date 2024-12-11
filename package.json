@@ -10,7 +10,7 @@
       "bootstrap": "lerna exec bun install",
       "create": "npx lerna create",
       "patch": "lerna publish prerelease",
-      "publish": "lerna publish from-package",
+      "publish": "lerna publish",
       "prepare": "husky",
       "version": "lerna version",
       "test": "lerna run test"
