@@ -1,8 +1,7 @@
 {
     "out": "./docs/",
     "entryPoints": [
-        "packages/lintydeps/src/index.ts",
-        "packages/prettierlogs/src/index.ts"
+        "packages/*/src/index.ts"
     ],
     "readme": "README.md",
     "name": "cordxapp",
