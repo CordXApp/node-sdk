@@ -1,6 +1,5 @@
 {
     "name": "cordxapp",
-    "private": false,
     "license": "AGPL-3.0-only",
     "workspaces": [
       "packages/*"
@@ -40,6 +39,9 @@
         "prettier --write",
         "git add"
       ]
+    },
+    "publishConfig": {
+      "access": "public"
     },
     "packageManager": "bun@1.1.34"
   }

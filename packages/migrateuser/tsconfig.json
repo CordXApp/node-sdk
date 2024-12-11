@@ -1,0 +1,12 @@
+{
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+        "lib": ["ESNext", "DOM"],
+        "moduleResolution": "node",
+        "typeRoots": ["../../node_modules/@types"],
+        "outDir": "../../dist/packages/prettierlogs",
+        "types": ["node"],
+        "rootDir": "./src"
+    },
+    "include": ["src/**/*.ts"]
+}

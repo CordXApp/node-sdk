@@ -1,2 +1,1 @@
-window.navigationData =
-    'data:application/octet-stream;base64,H4sIAAAAAAAACnXMOwqAMBBF0b28OhiwzFZERJLBBCcfkhEUce92YqH1vZzhhNAuMOCQ5HBUmm7VQqHM4mEQs9uYmn7y1KrtvESGwhqSg+kv9Silkkigynn5gd7HlzXew+nsaZMAAAA='
+window.navigationData = "data:application/octet-stream;base64,H4sIAAAAAAAACnXMOwqAMBBF0b28OhiwzFZERJLBBCcfkhEUce92YqH1vZzhhNAuMOCQ5HBUmm7VQqHM4mEQs9uYmn7y1KrtvESGwhqSg+kv9Silkkigynn5gd7HlzXew+nsaZMAAAA="
