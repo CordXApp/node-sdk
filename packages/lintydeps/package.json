@@ -1,6 +1,6 @@
 {
     "name": "@cordxapp/lintydeps",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "description": "Finds and reports missing or unused dependencies and dev dependencies",
     "author": "TheRealToxicDev",
     "main": "./dist/index.js",
