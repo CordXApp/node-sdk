@@ -4,7 +4,7 @@
         "packages/lintydeps/src/index.ts",
         "packages/prettierlogs/src/index.ts"
     ],
-    "readme": "./pages/home.md",
+    "readme": "README.md",
     "name": "cordxapp",
     "darkHighlightTheme": "dark-plus",
     "lightHighlightTheme": "light-plus",
