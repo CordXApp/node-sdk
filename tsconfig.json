@@ -6,5 +6,9 @@
     },
     "include": ["./packages/**/*.ts"],
     "exclude": ["node_modules", "dist"],
-    "references": [{ "path": "./packages/lintydeps" }, { "path": "./packages/prettierlogs" }]
+    "references": [
+        { "path": "./packages/lintydeps" }, 
+        { "path": "./packages/migrateuser" },
+        { "path": "./packages/prettierlogs" }
+    ]
 }
