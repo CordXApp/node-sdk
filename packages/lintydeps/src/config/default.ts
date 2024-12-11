@@ -1,4 +1,4 @@
-import depcheck from 'depcheck';
+import depcheck from 'depcheck'
 
 /**
  * Default configuration for lintydeps
@@ -15,16 +15,7 @@ import depcheck from 'depcheck';
 export const defaultConfig = {
     withoutDev: false,
     ignoreBinPackage: false,
-    ignoreDirs: [
-        "_bin",
-        "_output",
-        "_src",
-        "coverage",
-        "node_modules",
-        "public",
-        "test",
-        "tests",
-    ],
+    ignoreDirs: ['_bin', '_output', '_src', 'coverage', 'node_modules', 'public', 'test', 'tests'],
     /**
      * Ignore the following package globs
      * @type {string[]}
@@ -42,34 +33,25 @@ export const defaultConfig = {
      * @ignore mocha | Ignore mocha (used for testing)
      */
     ignoreMatches: [
-        "babel-*",
-        "lintydeps",
-        "@newrelix/native-metrics",
-        "coveralls",
-        "node-sass",
-        "istanbul",
-        "css-loader",
-        "file-loader",
-        "sass-loader",
-        "postcss-loader",
-        "image-webpack-loader",
-        "mocha"
+        'babel-*',
+        'lintydeps',
+        '@newrelix/native-metrics',
+        'coveralls',
+        'node-sass',
+        'istanbul',
+        'css-loader',
+        'file-loader',
+        'sass-loader',
+        'postcss-loader',
+        'image-webpack-loader',
+        'mocha'
     ],
     parsers: {
-        "*.js": [
-            depcheck.parser.jsx,
-            depcheck.parser.es6
-        ],
-        "*.jsx": depcheck.parser.jsx,
-        "*.ts": depcheck.parser.typescript,
-        "*.tsx": depcheck.parser.typescript
+        '*.js': [depcheck.parser.jsx, depcheck.parser.es6],
+        '*.jsx': depcheck.parser.jsx,
+        '*.ts': depcheck.parser.typescript,
+        '*.tsx': depcheck.parser.typescript
     },
-    detectors: [
-        depcheck.detector.requireCallExpression,
-        depcheck.detector.importDeclaration
-    ],
-    specials: [
-        depcheck.special.eslint,
-        depcheck.special.webpack
-    ]
+    detectors: [depcheck.detector.requireCallExpression, depcheck.detector.importDeclaration],
+    specials: [depcheck.special.eslint, depcheck.special.webpack]
 }

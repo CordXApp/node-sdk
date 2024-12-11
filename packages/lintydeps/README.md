@@ -15,13 +15,14 @@ npm install lintydeps --save-dev
 ---
 
 ## Basic Usage
+
 You can use LintyDeps by running the following command:
 
 ```sh
 npx linty <location>
 ```
 
-For example: 
+For example:
 
 ```sh
 npx linty .
@@ -30,11 +31,12 @@ npx linty .
 ---
 
 ## Configuration
+
 LintyDeps can be configured using a `.lintyrc` file in the root of your project. The configuration file can be in JSON or YAML format. Here is a basic config example in yaml:
 
 ```yaml
 withoutDev: true
 ignoreDirs:
-  - node_modules
-  - dist
+    - node_modules
+    - dist
 ```

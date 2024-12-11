@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-var linty = require('../src');
+var linty = require('../src')
