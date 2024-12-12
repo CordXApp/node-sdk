@@ -1,7 +1,7 @@
 {
     "name": "@cordxapp/db",
     "description": "Simple Node Module for the CordX Database Client",
-    "version": "0.0.0",
+    "version": "1.0.6",
     "main": "dist/index.js",
     "scripts": {
         "build": "tsc",
@@ -21,7 +21,7 @@
     },
     "devDependencies": {
         "@types/node": "^22.9.0",
-        "typescript": "^5.6.3",
-        "ts-node": "^10.9.2"
+        "ts-node": "^10.9.2",
+        "typescript": "^5.6.3"
     }
 }

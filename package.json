@@ -10,11 +10,11 @@
       "bootstrap": "lerna exec bun install",
       "create": "npx lerna create",
       "patch": "lerna publish prerelease",
-      "publish": "lerna publish",
-      "prisma:init": "lerna run init --scope @cordxapp/db",
+      "publish": "lerna publish from-package --yes",
       "prisma:generate": "lerna run generate --scope @cordxapp/db",
+      "postinstall": "lerna run generate --scope @cordxapp/db",
       "prepare": "husky",
-      "version": "lerna version",
+      "version": "lerna version --yes --conventional-commits",
       "test": "lerna run test"
     },
     "dependencies": {
