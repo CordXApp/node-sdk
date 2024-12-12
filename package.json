@@ -11,6 +11,8 @@
       "create": "npx lerna create",
       "patch": "lerna publish prerelease",
       "publish": "lerna publish",
+      "prisma:init": "lerna run init --scope @cordxapp/db",
+      "prisma:generate": "lerna run generate --scope @cordxapp/db",
       "prepare": "husky",
       "version": "lerna version",
       "test": "lerna run test"

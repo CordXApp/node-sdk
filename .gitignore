@@ -19,6 +19,12 @@ lerna-debug.log*
 packages/*/lib
 packages/*/dist
 packages/*/node_modules
+packages/*/.env.local
+packages/*/.env.development
+packages/*/.env.test
+packages/*/.env.production
+packages/*/.env
+
 
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
@@ -55,9 +61,6 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
-
-# TypeScript v1 declaration files
-typings/
 
 # TypeScript cache
 *.tsbuildinfo
