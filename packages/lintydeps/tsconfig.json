@@ -1,8 +1,9 @@
 {
     "extends": "../../tsconfig.base.json",
     "compilerOptions": {
-        "outDir": "../../dist/packages/prettierlogs",
+        "outDir": "./dist",
         "rootDir": "./src"
     },
-    "include": ["src/**/*.ts"]
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules", "dist"]
 }
