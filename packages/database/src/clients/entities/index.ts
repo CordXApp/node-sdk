@@ -1,7 +1,7 @@
 import Logger from '../../utils/logger.util'
 import Cornflake from '../../utils/cornflake.util'
 import { UserEntity } from './user.entity'
-import { CordXDatabase } from '..'
+import { CordXDatabase } from '../..'
 import { randomBytes } from 'crypto'
 import axios from 'axios'
 
