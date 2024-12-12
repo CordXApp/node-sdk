@@ -1,5 +1,6 @@
 {
     "out": "./docs/",
+    "tsconfig": "tsconfig.typedoc.json",
     "entryPoints": ["packages/*/src/index.ts"],
     "readme": "README.md",
     "name": "cordxapp",

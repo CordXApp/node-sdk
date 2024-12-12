@@ -15,13 +15,12 @@
         "noImplicitThis": true,
         "alwaysStrict": true,
         "removeComments": false,
-        "declaration": true,
-        "declarationMap": true,
-        "sourceMap": true,
+        "declaration": false,
+        "declarationMap": false,
+        "sourceMap": false,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": false,
         "strict": true,
-        "composite": true
     },
     "exclude": ["node_modules", "dist"]
 }
