@@ -1,9 +1,12 @@
 import Logger from '../../utils/logger.util'
 import { randomBytes, createCipheriv, createDecipheriv } from 'crypto'
 import Cornflake from '../../utils/cornflake.util'
-import { UserEntity } from './user.entity'
 import { CordXDatabase } from '../..'
 import axios from 'axios'
+
+import { UserEntity } from './user.entity'
+import { OrgEntity } from './org.entity';
+import { BotEntity } from './bot.entity';
 
 export class EntityClient {
     private discordApiUrl: string
@@ -12,13 +15,17 @@ export class EntityClient {
     public db: CordXDatabase
 
     public users: UserEntity
+    public orgs: OrgEntity;
+    public bots: BotEntity;
 
     constructor(db: CordXDatabase) {
         this.discordApiUrl = 'https://proxy.cordx.lol/api'
         this.logs = new Logger(`[@cordxapp/db]:entity_client`)
         this.db = db
 
-        this.users = new UserEntity(this)
+        this.users = new UserEntity(this);
+        this.orgs = new OrgEntity(this);
+        this.bots = new BotEntity(this);
 
         this.validateBotId = this.validateBotId.bind(this)
         this.validateUserId = this.validateUserId.bind(this)
