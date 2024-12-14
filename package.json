@@ -1,0 +1,50 @@
+{
+    "name": "cordxapp",
+    "license": "AGPL-3.0-only",
+    "workspaces": [
+      "packages/*"
+    ],
+    "scripts": {
+      "build": "lerna run build",
+      "document": "typedoc",
+      "bootstrap": "lerna exec bun install",
+      "create": "npx lerna create",
+      "patch": "lerna publish prerelease",
+      "publish": "lerna publish from-package --yes",
+      "prepare": "husky",
+      "version:all": "lerna version --force-publish",
+      "version": "lerna version",
+      "test": "lerna run test"
+    },
+    "dependencies": {
+      "@cordxapp/db": "workspace:*",
+      "@cordxapp/lintydeps": "workspace:*",
+      "@cordxapp/prettierlogs": "workspace:*",
+      "typedoc": "^0.26.11"
+    },
+    "devDependencies": {
+      "@commitlint/cli": "^19.6.0",
+      "@commitlint/config-conventional": "^19.6.0",
+      "@types/node": "^22.9.0",
+      "commitlint": "^19.6.0",
+      "husky": "^9.1.7",
+      "lerna": "^8.1.9",
+      "lint-staged": "^15.2.10",
+      "prettier": "^3.3.3",
+      "typescript": "5.6.3"
+    },
+    "lint-staged": {
+      "./packages/**/*.{ts,tsx,js,jsx}": [
+        "prettier --write",
+        "git add"
+      ],
+      "./packages/**/*.{ts,tsx,js,jsx,json,css,scss,md}": [
+        "prettier --write",
+        "git add"
+      ]
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "packageManager": "bun@1.1.34"
+  }
