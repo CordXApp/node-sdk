@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import { EntityClient } from './clients/entities'
+import { PartnerClient } from './clients/partners'
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -23,10 +24,12 @@ const prisma = new PrismaClient({
 export class CordXDatabase {
     public prisma: PrismaClient
     public entities: EntityClient
+    public partners: PartnerClient;
 
     constructor() {
         this.prisma = prisma
         this.entities = new EntityClient(this)
+        this.partners = new PartnerClient(this);
 
         validateEnvVars()
     }

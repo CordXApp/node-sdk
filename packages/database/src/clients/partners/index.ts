@@ -5,12 +5,12 @@ import { CordXDatabase } from '../..'
 export class PartnerClient {
     private logs: Logger
     public db: CordXDatabase
-    public partners: PartnersClient
+    public method: PartnersClient
 
     constructor(db: CordXDatabase) {
         this.logs = new Logger('[@cordxapp/db]:partner_client')
         this.db = db
 
-        this.partners = new PartnersClient(this)
+        this.method = new PartnersClient(this)
     }
 }
