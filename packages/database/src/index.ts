@@ -1,6 +1,11 @@
 import { PrismaClient } from '@prisma/client'
+import { BlogClient } from './clients/blog'
+import { DNSClient } from './clients/dns'
 import { EntityClient } from './clients/entities'
+import { OrgClient } from './clients/orgs'
+import { OtherClients } from './clients/other'
 import { PartnerClient } from './clients/partners'
+import { PermsClient } from './clients/perms'
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -23,13 +28,24 @@ const prisma = new PrismaClient({
 
 export class CordXDatabase {
     public prisma: PrismaClient
+    public blog: BlogClient
+    public dns: DNSClient
     public entities: EntityClient
-    public partners: PartnerClient;
+    public orgs: OrgClient
+    public other: OtherClients
+    public partners: PartnerClient
+    public perms: PermsClient
 
     constructor() {
         this.prisma = prisma
-        this.entities = new EntityClient(this)
+
+        this.blog = new BlogClient(this);
+        this.dns = new DNSClient(this);
+        this.entities = new EntityClient(this);
+        this.orgs = new OrgClient(this);
+        this.other = new OtherClients(this);
         this.partners = new PartnerClient(this);
+        this.perms = new PermsClient(this);
 
         validateEnvVars()
     }

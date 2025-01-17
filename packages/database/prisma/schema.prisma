@@ -89,6 +89,9 @@ model OrgMembers {
     roles  MemberPerms[]
     userId String        @unique
 
+    createdAt DateTime  @default(now())
+    updatedAt DateTime? @updatedAt
+
     @@unique([orgId, userId])
 }
 
@@ -115,6 +118,9 @@ model Domains {
     entityId String
     entity   Entity  @relation(fields: [entityId], references: [id])
 
+    createdAt DateTime  @default(now())
+    updatedAt DateTime? @updatedAt
+
     @@unique([name, entityId])
 }
 
@@ -137,13 +143,16 @@ model Uploads {
 }
 
 model Webhooks {
-    id       String  @id @unique // The unique identifier for the webhook 
+    id       String  @id @default(uuid()) // The unique identifier for the webhook 
     name     String  @db.Text // The name of the webhook (IE: Discord Webhook)
     token    String  @db.Text // The token for the webhook
     enabled  Boolean @default(true) // If the webhook is enabled
     hook_url String  @db.Text // The URL for the webhook
     entityId String // The Entity ID (User, Bot or Organization)
     entity   Entity  @relation(fields: [entityId], references: [id])
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime? @updatedAt
 }
 
 //-- ERROR REPORTING AND TRACKING SYSTEM (SNAILY) --//
@@ -171,7 +180,7 @@ model partners {
 
 //-- REPORTING SYSTEM FOR CORDX --//
 model reports {
-    id        String       @id // Unique identifier for the report
+    id        String       @id @default(uuid()) // Unique identifier for the report
     type      ReportTypes  @default(BUG_REPORT) // The type of the report
     status    ReportStatus @default(OPEN) // The status of the report
     author    String       @db.Text // The user who reported the issue

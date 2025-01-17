@@ -1,4 +1,4 @@
-import { UserEntityClient, Responses } from '../../typings'
+import { Responses } from '../../typings'
 import { Entity, EntityType } from '../../typings/entity'
 import { EntityClient } from '.'
 
